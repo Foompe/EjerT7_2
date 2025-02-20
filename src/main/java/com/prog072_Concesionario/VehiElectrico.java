@@ -44,6 +44,21 @@ public class VehiElectrico extends Vehiculo {
                 '}';
     }
 
+    public void circular() {
+        if (estadoEncendido) {
+            int nivelact = cargaActual - 10;
+            try {
+                setCargaActual(nivelact);
+                System.out.println("Vehiculo circulando");
+                System.out.println("Nivel de combustible actual: " + cargaActual + " %");
+            } catch (FaltaRecursos e) {
+                System.err.println("Mensaje: " + e.getMessage());
+            }
+        } else {
+            System.out.println("¡El coche no puede circular sin no esta encendido");
+        }
+    }
+
     //getters y setters
     public int getCapacidadBateria() {
         return capacidadBateria;
@@ -58,7 +73,7 @@ public class VehiElectrico extends Vehiculo {
     }
 
     public void setCargaActual(int cargaActual) throws FaltaRecursos {
-        if (cargaActual <= 0 ) {
+        if (cargaActual < 0 ) {
             throw new FaltaRecursos("¡Error!¡El coche no tiene carga!");
         }
         this.cargaActual = cargaActual;

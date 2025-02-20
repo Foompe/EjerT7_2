@@ -13,7 +13,7 @@ public class Vehiculo implements Reparable {
     protected int capacidadDepo;
     protected int velocidad;
     protected int combustible;
-    protected boolean estadoEncendido;
+    protected boolean estadoEncendido = false;
 
     //constructor con parametros
     public Vehiculo(int capacidadDepo, String color, String marca, String modelo, int velMax) {
@@ -24,6 +24,20 @@ public class Vehiculo implements Reparable {
         this.velMax = velMax;
     }
 
+    public void circular() {
+        if (estadoEncendido) {
+            int nivelact = combustible - 10;
+            try {
+                setCombustible(nivelact);
+                System.out.println("Vehiculo circulando");
+                System.out.println("Nivel de combustible actual: " + combustible + " %");
+            } catch (FaltaRecursos e) {
+                System.err.println("Mensaje: " + e.getMessage());
+            }
+        } else {
+            System.out.println("¡El coche no puede circular sin no esta encendido");
+        }
+    }
     public void encender () throws FaltaRecursos {
         if (combustible <= 0 ) {
             throw new FaltaRecursos("¡Error!¡El coche no tiene combustible!");
@@ -111,7 +125,7 @@ public class Vehiculo implements Reparable {
     }
 
     public void setCombustible(int combustible) throws FaltaRecursos {
-        if (combustible <= 0) {
+        if (combustible < 0) {
             throw new FaltaRecursos("¡Error!¡No tienes combustible!");
         }
         this.combustible = combustible;
