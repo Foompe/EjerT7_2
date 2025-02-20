@@ -1,5 +1,7 @@
 package com.prog072_Concesionario;
 
+import com.prog072_Excepciones.FaltaRecursos;
+import com.prog072_Excepciones.VelocidadMaximaException;
 import com.prog072_Interfaces.Reparable;
 
 public class Vehiculo implements Reparable {
@@ -9,6 +11,9 @@ public class Vehiculo implements Reparable {
     protected int velMax;
     protected String color;
     protected int capacidadDepo;
+    protected int velocidad;
+    protected int combustible;
+    protected boolean estadoEncendido;
 
     //constructor con parametros
     public Vehiculo(int capacidadDepo, String color, String marca, String modelo, int velMax) {
@@ -19,9 +24,22 @@ public class Vehiculo implements Reparable {
         this.velMax = velMax;
     }
 
+    public void encender () throws FaltaRecursos {
+        if (combustible <= 0 ) {
+            throw new FaltaRecursos("¡Error!¡El coche no tiene combustible!");
+        }
+        System.out.println("Coche encendido");
+        this.estadoEncendido = true;
+    }
+
+    public void apagar () {
+        this.estadoEncendido = false;
+    }
+
     @Override
     public void reparar() {
         System.out.println("El coche " + marca + " " + modelo + " esta siendo reparado");
+        this.combustible = 100;
     }
 
     //metodo to string
@@ -75,5 +93,35 @@ public class Vehiculo implements Reparable {
 
     public void setVelMax(int velMax) {
         this.velMax = velMax;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) throws VelocidadMaximaException {
+        if (velocidad > 120) {
+            throw new VelocidadMaximaException("¡Error!¡Velocidad excesiva!");
+        }
+        this.velocidad = velocidad;
+    }
+
+    public int getCombustible() {
+        return combustible;
+    }
+
+    public void setCombustible(int combustible) throws FaltaRecursos {
+        if (combustible <= 0) {
+            throw new FaltaRecursos("¡Error!¡No tienes combustible!");
+        }
+        this.combustible = combustible;
+    }
+
+    public boolean isEstadoEncendido() {
+        return estadoEncendido;
+    }
+
+    public void setEstadoEncendido(boolean estadoEncendido) {
+        this.estadoEncendido = estadoEncendido;
     }
 }

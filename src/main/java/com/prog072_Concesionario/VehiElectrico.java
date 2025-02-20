@@ -1,5 +1,7 @@
 package com.prog072_Concesionario;
 
+import com.prog072_Excepciones.FaltaRecursos;
+
 public class VehiElectrico extends Vehiculo {
 
     //atributos de clase
@@ -17,6 +19,15 @@ public class VehiElectrico extends Vehiculo {
     @Override
     public void reparar() {
         System.out.println("El coche electrico " + marca + " " + modelo + " esta siendo reparado");
+        this.cargaActual = 100;
+    }
+
+    public void encender () throws FaltaRecursos {
+        if (cargaActual <= 0 ) {
+            throw new FaltaRecursos("¡Error!¡El coche no tiene carga!");
+        }
+        System.out.println("Coche  electrico encendido");
+        estadoEncendido = true;
     }
 
     //metodo to string
@@ -46,7 +57,10 @@ public class VehiElectrico extends Vehiculo {
         return cargaActual;
     }
 
-    public void setCargaActual(int cargaActual) {
+    public void setCargaActual(int cargaActual) throws FaltaRecursos {
+        if (cargaActual <= 0 ) {
+            throw new FaltaRecursos("¡Error!¡El coche no tiene carga!");
+        }
         this.cargaActual = cargaActual;
     }
 }
