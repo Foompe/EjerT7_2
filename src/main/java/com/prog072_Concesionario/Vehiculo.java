@@ -34,7 +34,7 @@ public class Vehiculo implements Reparable {
                 System.out.println("Vehiculo circulando");
                 System.out.println("Nivel de combustible actual: " + combustible + " %");
             } catch (FaltaRecursos e) {
-                System.err.println("Mensaje: " + e.getMessage());
+                System.out.println("Mensaje: " + e.getMessage());
                 //no es necesario ponerlo con err
             }
         } else {

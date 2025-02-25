@@ -21,7 +21,7 @@ public class Main {
         try {
             coche1.encender();
         } catch (FaltaRecursos e) {
-            System.err.println("Mensaje encendido coche cobustión: " + e.getMessage());
+            System.out.println("Mensaje encendido coche cobustión: " + e.getMessage());
 
             //Aquí dentro podemos introducir más código, el que queramos, que haga lo que queremos
         }
@@ -29,7 +29,7 @@ public class Main {
         try {
             cocheelec1.encender();
         }catch (FaltaRecursos e) {
-            System.err.println("Mensaje encendido coche electrico" + e.getMessage());
+            System.out.println("Mensaje encendido coche electrico" + e.getMessage());
         }
 
         //fijamos la velocidad
@@ -37,14 +37,14 @@ public class Main {
             coche1.setVelocidad(120);
             System.out.println("Velocidad fijada coche en: " + coche1.getVelocidad());
         } catch (VelocidadMaximaException e) {
-            System.err.println("Mensaje vel coche combus: " + e.getMessage());
+            System.out.println("Mensaje vel coche combus: " + e.getMessage());
         }
 
         try {
             cocheelec1.setVelocidad(150);
             System.out.println("Velocidad fijada coche electrico en: " + cocheelec1.getVelocidad());
         } catch (VelocidadMaximaException e) {
-            System.err.println("Mensaje vel coche elect: " + e.getMessage());
+            System.out.println("Mensaje vel coche elect: " + e.getMessage());
         }
 
 

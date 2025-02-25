@@ -52,7 +52,7 @@ public class VehiElectrico extends Vehiculo {
                 System.out.println("Vehiculo circulando");
                 System.out.println("Nivel de combustible actual: " + cargaActual + " %");
             } catch (FaltaRecursos e) {
-                System.err.println("Mensaje: " + e.getMessage());
+                System.out.println("Mensaje: " + e.getMessage());
             }
         } else {
             System.out.println("¡El coche no puede circular sin no esta encendido");
