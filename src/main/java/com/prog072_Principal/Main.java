@@ -22,6 +22,8 @@ public class Main {
             coche1.encender();
         } catch (FaltaRecursos e) {
             System.err.println("Mensaje encendido coche cobustión: " + e.getMessage());
+
+            //Aquí dentro podemos introducir más código, el que queramos, que haga lo que queremos
         }
 
         try {

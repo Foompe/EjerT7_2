@@ -6,6 +6,8 @@ import com.prog072_Interfaces.Reparable;
 
 public class Vehiculo implements Reparable {
 
+    //esta clase deberia ser abstracta, ya que el vehiculo electrico no va a usar gasolina
+
     protected String marca;
     protected String modelo;
     protected int velMax;
